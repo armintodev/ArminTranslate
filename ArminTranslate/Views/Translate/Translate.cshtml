@@ -5,35 +5,57 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <!-- CSS only -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+    <link href="/Styles/css/Custom.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
     <title>Translate</title>
 </head>
 <body>
 
     <div class="container">
         <div style="height:700px;background-color:#9ab3f5">
-            <form asp-action="Translate" method="get">
-               <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Search</span>
-                  </div>
-                  <input type="search" name="text" class="form-control" placeholder="translate" aria-label="Username" aria-describedby="basic-addon1">
+            <form asp-action="Translate" method="post">
+                <div class="input-group mb-3">
+                    <input type="search" name="text" onkeyup="OnTranslate(this)" autocomplete="off" style="height:120px;line-height:120px" class="form-input col-xs-12 col-lg-6 col-md-6" placeholder="Translate" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="search" name="translated" autocomplete="off" style="height:120px;line-height:120px" disabled value="@ViewBag.Content" class="col-lg-6 col-md-6" placeholder="Translated" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
-                <input type="submit" value="ترجمه" class="btn btn-success"/>
+                <div class="form-group col-md-3">
+                    <label for="translateTo">Translate From :</label>
+                    <select class="form-control" name="from">
+                        <option value="fa">Persian</option>
+                        <option value="en">English</option>
+                    </select>
+                    <label for="translateTo">Translate To :</label>
+                    <select class="form-control" name="to">
+                        <option value="en">English</option>
+                        <option value="fa">Persian</option>
+                    </select>
+                </div>
+                <hr />
+                <input type="submit" id="translateButton" value="Go" class="btn btn-block btn-success btn-anim" disabled />
             </form>
-            <div style="background-color:#fff">
-                <hr/>
-                <h3>
-                    @ViewBag.Content
-                </h3>
-                <hr/>
-            </div>
         </div>
     </div>
 
+
+
+    <!-- JS Code -->
+    <script>
+        function OnTranslate(translate) {
+            var bt = document.getElementById('translateButton');
+            if (translate.value != '') {
+                bt.disabled = false;
+            }
+            else {
+                bt.disabled = true;
+            }
+        }
+    </script>
+
+
     <!-- JS,jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    @*<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    *@
+    <script src="~/js/bootstrap.min.js"></script>
 </body>
 </html>
