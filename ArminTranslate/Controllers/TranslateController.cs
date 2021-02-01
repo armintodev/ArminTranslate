@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,8 +13,7 @@ namespace ArminTranslate.Controllers
         {
             //translate api
             var client = new RestClient($"https://api.codebazan.ir/lang/google/?FROM={from}&TO={to}&TEXT={text}");
-            //var client = new RestClient($"https://api.codebazan.ir/lang/google/?FROM=fa&TO=en&TEXT={text}");
-
+            
             //request api
             var request = new RestRequest(Method.GET);
             
