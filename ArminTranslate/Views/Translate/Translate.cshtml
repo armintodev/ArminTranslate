@@ -5,7 +5,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <!-- CSS only -->
-    <link href="/Styles/css/Custom.css" rel="stylesheet" />
+    <link href="~/Styles/css/Custom.css" rel="stylesheet" />
     <link href="~/css/bootstrap.min.css" rel="stylesheet" />
     <title>Translate</title>
 </head>
@@ -13,7 +13,8 @@
 
     <div class="container">
         <div style="height:700px;background-color:#9ab3f5">
-            <form asp-action="Translate" method="post">
+            <form asp-action="Translate"
+                  method="post">
                 <div class="input-group mb-3">
                     <input type="search" name="text" onkeyup="OnTranslate(this)" autocomplete="off" style="height:120px;line-height:120px" class="form-input col-xs-12 col-lg-6 col-md-6" placeholder="Translate" aria-label="Username" aria-describedby="basic-addon1">
                     <input type="search" name="translated" autocomplete="off" style="height:120px;line-height:120px" disabled value="@ViewBag.Content" class="col-lg-6 col-md-6" placeholder="Translated" aria-label="Username" aria-describedby="basic-addon1">
@@ -38,6 +39,12 @@
 
 
 
+    <!-- JS,jQuery -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+
     <!-- JS Code -->
     <script>
         function OnTranslate(translate) {
@@ -50,12 +57,5 @@
             }
         }
     </script>
-
-
-    <!-- JS,jQuery -->
-    @*<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    *@
-    <script src="~/js/bootstrap.min.js"></script>
 </body>
 </html>
